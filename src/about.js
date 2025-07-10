@@ -1,4 +1,4 @@
-function creteAbout() {
+function createAbout() {
     const aboutContainer = document.createElement('div');
     aboutContainer.classList.add('about-container');
 
@@ -11,3 +11,4 @@ function creteAbout() {
     aboutDescription.classList.add('about-description');
 
 }
+export {createAbout};
