@@ -12,25 +12,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const complaintsButton = document.getElementById("complaintsbtn");
 
     //function to help clean the content and reaload
-    function loadAndDsiplayContent(pageCreatorFunction) {
+    function loadAndDsiplayContent(pageCreatorFunction, activeButton) {
+        const allNavButtons = document.querySelectorAll("nav button");
+        allNavButtons.forEach(button => {
+            button.classList.remove("active");
+        });
+        
         contentDiv.innerHTML = "";
         contentDiv.appendChild(pageCreatorFunction());
+
+        if (activeButton) {
+            activeButton.classList.add("active");
+        }
     }
 
     //load the home page everytime the page get reloaded or opened
-    loadAndDsiplayContent(createHomePage);
+    loadAndDsiplayContent(createHomePage, homeButton);
 
     //event listeners to each button
     homeButton.addEventListener('click', () =>  {
-        loadAndDsiplayContent(createHomePage);
+        loadAndDsiplayContent(createHomePage, homeButton);
     });
     menuButton.addEventListener('click', () => {
-        loadAndDsiplayContent(createMenu);
+        loadAndDsiplayContent(createMenu, menuButton);
     });
     aboutButton.addEventListener('click', () => {
-        loadAndDsiplayContent(createAbout);
+        loadAndDsiplayContent(createAbout, aboutButton);
     });
     complaintsButton.addEventListener('click', () => {
-        loadAndDsiplayContent(createComplaints);
+        loadAndDsiplayContent(createComplaints, complaintsButton);
     });
 });
